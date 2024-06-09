@@ -1,4 +1,3 @@
-# scrap
 # Marathi Sentence Splitter and Categorizer
 
 ## Overview
@@ -99,4 +98,48 @@ This project contains scripts to process a Marathi text file by splitting it int
 
     input_file_path = 'C:\\Users\\HP\\OneDrive\\Desktop\\scrapping\\sentence wise\\sc&t2.txt'
 
-   
+    # Load the Marathi sentences from the input file
+    with open(input_file_path, 'r', encoding='utf-8') as f:
+        sentences = [line.strip() for line in f.readlines()]
+
+    # Remove line breaks and empty strings from the sentences
+    sentences = [sentence.replace('\n', '') for sentence in sentences if sentence.replace('\n', '')]
+
+    # Create the output directory
+    output_dir = "C:\\Users\\HP\\OneDrive\\Desktop\\scrapping\\sentence wise\\sc&t2"
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Create the output files
+    files = {
+        '1-10': open(os.path.join(output_dir,'sentences_1-10.txt'), 'w', encoding='utf-8'),
+        '11-20': open(os.path.join(output_dir,'sentences_11-20.txt'), 'w', encoding='utf-8'),
+        '21-30': open(os.path.join(output_dir,'sentences_21-30.txt'), 'w', encoding='utf-8'),
+        '30+': open(os.path.join(output_dir,'sentences_30+.txt'), 'w', encoding='utf-8')
+    }
+
+    # Distribute the sentences based on word count
+    for sentence in sentences:
+        words = sentence.split()
+        word_count = len(words)
+        if word_count <= 10:
+            files['1-10'].write(sentence + '\n')
+        elif word_count <= 20:
+            files['11-20'].write(sentence + '\n')
+        elif word_count <= 30:
+            files['21-30'].write(sentence + '\n')
+        else:
+            files['30+'].write(sentence + '\n')
+
+    # Close the output files
+    for file in files.values():
+        file.close()
+    ```
+
+## Conclusion
+
+This project provides a straightforward way to process Marathi text by splitting it into unique sentences and categorizing them based on word count. By following the steps above, you can efficiently handle large text files and organize the sentences for further analysis or processing.
+
+### Example
+
+Given the input file `sci&t2.txt` with the following content:
+
