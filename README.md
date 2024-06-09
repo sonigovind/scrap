@@ -139,7 +139,11 @@ This project contains scripts to process a Marathi text file by splitting it int
 
 This project provides a straightforward way to process Marathi text by splitting it into unique sentences and categorizing them based on word count. By following the steps above, you can efficiently handle large text files and organize the sentences for further analysis or processing.
 
-### Example
+The output files will be categorized based on the word count as follows:
 
-Given the input file `sci&t2.txt` with the following content:
+- `sentences_1-10.txt`
+- `sentences_11-20.txt`
+- `sentences_21-30.txt`
+- `sentences_30+.txt`
+
 
